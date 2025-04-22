@@ -1,0 +1,12 @@
+{
+  "name": "blog-post",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "server": "cd backend && npm run start:dev",
+    "client": "cd frontend && npm run dev"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
