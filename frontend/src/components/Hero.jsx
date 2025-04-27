@@ -1,43 +1,35 @@
-import { Link } from "react-router"
-import FeaturedBlogCard from "../components/FeaturedBlogCard"
-import BlogCard from "../components/BlogCard"
-import { Button } from "../components/ui/button"
-import { cn } from "../lib/utils"
-import { ArrowRight } from "lucide-react"
-import { useState } from "react"
-import { useEffect } from "react"
+import { Link } from "react-router";
+import FeaturedBlogCard from "../components/FeaturedBlogCard";
+import BlogCard from "../components/BlogCard";
+import { Button } from "../components/ui/button";
+import { cn } from "../lib/utils";
+import { ArrowRight } from "lucide-react";
+import { useState } from "react";
+import { useEffect } from "react";
+import { useGetPostsQuery } from "../lib/services/postApiSlice";
+import FeaturedBlogCardSkeleton from "./FeaturedBlogCardSkeleton";
 
 const Hero = () => {
-  const [animatedBlogs, setAnimatedBlogs] = useState(false)
+  const [animatedBlogs, setAnimatedBlogs] = useState(false);
 
   useEffect(() => {
     // Trigger animation after component mounts
     setTimeout(() => {
-      setAnimatedBlogs(true)
-    }, 300)
+      setAnimatedBlogs(true);
+    }, 300);
 
     // Remove any opacity classes that might be affecting the hero section
     const heroElements = document.querySelectorAll(
       ".hero-section h1, .hero-section p, .hero-section div"
-    )
+    );
     heroElements.forEach((el) => {
-      el.classList.add("is-visible")
-    })
-  }, [])
+      el.classList.add("is-visible");
+    });
+  }, []);
 
-  const featuredBlog = {
-    id: "2",
-    title: "The Ultimate Guide to Modern Web Development Practices in 2025",
-    excerpt:
-      "Learn about the latest trends, tools, and techniques that are shaping modern web development in 2025 and beyond.",
-    coverImage:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80",
-    author: "Alex Johnson",
-    date: "April 2, 2025",
-    readTime: "8 min read",
-    tags: ["Web Development", "React", "Trends"],
-  }
+  const { data: blogs, isLoading, error } = useGetPostsQuery();
 
+  
   const recentBlogs = [
     {
       id: "blog-1",
@@ -76,7 +68,8 @@ const Hero = () => {
       readTime: "7 min read",
       tags: ["Performance", "Optimization", "Web"],
     },
-  ]
+  ];
+
   return (
     <main>
       {/* Hero Section */}
@@ -103,7 +96,6 @@ const Hero = () => {
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
-              
             </div>
           </div>
         </div>
@@ -115,7 +107,11 @@ const Hero = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="mb-12">
           <h2 className="text-3xl font-bold mb-10">Featured Post</h2>
-          <FeaturedBlogCard {...featuredBlog} />
+          {isLoading ? (
+            <FeaturedBlogCardSkeleton />
+          ) : (
+            <FeaturedBlogCard {...blogs[0]} />
+          )}
         </div>
 
         {/* Recent Posts Section */}
@@ -149,7 +145,7 @@ const Hero = () => {
         </div>
       </section>
     </main>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

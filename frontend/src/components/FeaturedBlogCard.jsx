@@ -1,21 +1,20 @@
-import { useState, useTransition } from "react"
-import { Link } from "react-router"
-import { cn } from "../lib/utils"
-import { CalendarDays, Clock, User } from "lucide-react"
-import { Button } from "../components/ui/button"
+import { useState, useTransition } from "react";
+import { Link } from "react-router";
+import { cn } from "../lib/utils";
+import { CalendarDays, User } from "lucide-react";
+import { Button } from "../components/ui/button";
 
 const FeaturedBlogCard = ({
-  id,
+  _id,
   title,
   excerpt,
   coverImage,
   author,
   date,
-  readTime,
   tags = [],
 }) => {
-  const [isPending, startTransition] = useTransition()
-  const [isHovered, setIsHovered] = useState(false)
+  const [isPending, startTransition] = useTransition();
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <article
@@ -46,28 +45,26 @@ const FeaturedBlogCard = ({
           ))}
         </div>
 
-        <Link to={`/blogs/${id}`} className="block">
+        <Link to={`/blogs/${_id}`} className="block">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 transition-colors hover:text-primary">
             {title}
           </h2>
         </Link>
 
         <p className="text-white/80 mb-6 max-w-2xl line-clamp-3">{excerpt}</p>
-
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center text-sm text-white/70 space-x-4 mb-4 sm:mb-0">
             <div className="flex items-center">
               <User className="h-4 w-4 mr-1" />
-              <span>{author}</span>
+              <span>{author.username}</span>
             </div>
             <div className="flex items-center">
               <CalendarDays className="h-4 w-4 mr-1" />
               <span>{date}</span>
             </div>
-           
           </div>
 
-          <Link to={`/blog/${id}`}>
+          <Link to={`/blogs/${_id}`}>
             <Button className="bg-primary hover:bg-primary/90">
               Read Article
             </Button>
@@ -75,7 +72,7 @@ const FeaturedBlogCard = ({
         </div>
       </div>
     </article>
-  )
-}
+  );
+};
 
-export default FeaturedBlogCard
+export default FeaturedBlogCard;

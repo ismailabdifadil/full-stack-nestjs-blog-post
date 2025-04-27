@@ -5,11 +5,14 @@ import { AuthController } from './auth.controller';
 import { UsersModule } from '../users/users.module';
 import { JwtAuthGuard } from './guards/auth-guard';
 
+const secret = 'THE_DIINSAALOW_SECRET_KEY';
+
 @Module({
   imports: [
     UsersModule,
     JwtModule.register({
-      secret: process.env.JWT_SECRET || 'your-secret-key',
+      global: true,
+      secret: secret,
       signOptions: { expiresIn: '1d' },
     }),
   ],

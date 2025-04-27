@@ -13,15 +13,28 @@ export class JwtAuthGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
     const authHeader = request.headers.authorization;
-    const token = authHeader?.split(' ')[1];
+    console.log('Auth header:', authHeader);
+
+    if (!authHeader) {
+      throw new UnauthorizedException('No authorization header');
+    }
+
+    const token = authHeader.split(' ')[1];
+    console.log('Extracted token:', token);
+
     if (!token) {
       throw new UnauthorizedException('No token provided');
     }
+
     try {
-      const payload = await this.jwtService.verifyAsync(token);
-      console.log('the payload is', payload);
+      console.log('Attempting to verify token...');
+      const payload = await this.jwtService.verifyAsync(token, {
+        secret: 'THE_DIINSAALOW_SECRET_KEY',
+      });
+      console.log('Token verified successfully. Payload:', payload);
       request.user = payload;
     } catch (error) {
+      console.error('Token verification failed:', error.message);
       throw new UnauthorizedException('Invalid token');
     }
     return true;

@@ -5,6 +5,7 @@ const baseQuery = fetchBaseQuery({
     const state = getState();
 
     const token = state?.user?.token;
+    console.log('the token is', token);
     if (token) {
       headers.set("Authorization", `Bearer ${token}`);
     }
@@ -14,6 +15,6 @@ const baseQuery = fetchBaseQuery({
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery,
-  tagTypes: ["Blog", "User"],
+  tagTypes: ["Blog", "User", "Posts"],
   endpoints: () => ({}),
 });

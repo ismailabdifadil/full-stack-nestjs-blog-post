@@ -1,13 +1,8 @@
 import { CalendarDays } from "lucide-react"
 import React from "react"
-import { useState } from "react"
-import { Link, useNavigate, useParams } from "react-router"
-import { cn } from "../lib/utils"
+import { useNavigate, useParams } from "react-router"
 import { Button } from "../components/ui/button"
 import { ChevronLeft } from "lucide-react"
-import { Share2 } from "lucide-react"
-import { Bookmark } from "lucide-react"
-import { Edit } from "lucide-react"
 import BlogCard from "../components/BlogCard"
 
 const blogPost = {
@@ -66,14 +61,12 @@ const blogPost = {
   author: "Sarah Williams",
   authorImage: "https://randomuser.me/api/portraits/women/44.jpg",
   date: "April 1, 2025",
-  readTime: "5 min read",
   tags: ["React", "Hooks", "JavaScript"],
 }
 
 const BlogDetails = () => {
   const { id } = useParams()
   console.log(id)
-  const [isScrolled, setIsScrolled] = useState(false)
   const navigate = useNavigate()
 
   const post = blogPost

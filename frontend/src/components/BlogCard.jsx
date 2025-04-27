@@ -7,7 +7,7 @@ import { Button } from "../components/ui/button";
 
 
 const BlogCard = ({
-  id,
+  _id,
   title,
   excerpt,
   coverImage,
@@ -65,7 +65,7 @@ const BlogCard = ({
             isHovered ? "text-primary" : ""
           )}
         >
-          <Link to={`/blogs/${id}`}>{title}</Link>
+          <Link to={`/blogs/${_id}`}>{title}</Link>
         </h3>
 
         <p className="text-muted-foreground mb-4 line-clamp-2">{excerpt}</p>
@@ -74,7 +74,7 @@ const BlogCard = ({
           <div className="flex items-center text-sm text-muted-foreground space-x-4 mb-4 ">
             <div className="flex items-center ">
               <User className="h-4 w-4 mr-1" />
-              <span>{author}</span>
+              <span>{author.username}</span>
             </div>
             <div className="flex items-center">
               <CalendarDays className="h-4 w-4 mr-1" />
@@ -82,7 +82,7 @@ const BlogCard = ({
             </div>
           </div>
 
-          <Link to={`/blogs/${id}`}>
+          <Link to={`/blogs/${_id}`}>
             <Button
               variant="ghost"
               className="text-primary hover:text-primary/80 px-3"

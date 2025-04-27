@@ -6,6 +6,7 @@ const NewBlog = () => {
   const navigate = useNavigate();
 
   const handleCreateBlog = () => {
+    console.log(first)
     navigate("/blogs");
   };
 

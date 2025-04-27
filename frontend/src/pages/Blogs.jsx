@@ -15,7 +15,6 @@ const blogs = [
     coverImage: 'https://images.unsplash.com/photo-1555099962-4199c345e5dd?auto=format&fit=crop&q=80',
     author: 'Sarah Williams',
     date: 'April 1, 2025',
-    readTime: '5 min read',
     tags: ['React', 'Hooks', 'JavaScript'],
   },
   {
@@ -25,7 +24,6 @@ const blogs = [
     coverImage: 'https://images.unsplash.com/photo-1618477388954-7852f32655ec?auto=format&fit=crop&q=80',
     author: 'Michael Brown',
     date: 'March 28, 2025',
-    readTime: '6 min read',
     tags: ['CSS', 'Tailwind', 'Styling'],
   },
   {
@@ -35,7 +33,6 @@ const blogs = [
     coverImage: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80',
     author: 'Emily Chen',
     date: 'March 25, 2025',
-    readTime: '7 min read',
     tags: ['Performance', 'Optimization', 'Web'],
   },
   {
@@ -45,7 +42,6 @@ const blogs = [
     coverImage: 'https://images.unsplash.com/photo-1592424002053-21f369ad7fdb?auto=format&fit=crop&q=80',
     author: 'Alex Johnson',
     date: 'March 20, 2025',
-    readTime: '8 min read',
     tags: ['Accessibility', 'Web', 'UX'],
   },
   {
@@ -55,7 +51,6 @@ const blogs = [
     coverImage: 'https://images.unsplash.com/photo-1517134191118-9d595e4c8c2b?auto=format&fit=crop&q=80',
     author: 'David Lee',
     date: 'March 15, 2025',
-    readTime: '6 min read',
     tags: ['CSS', 'Frontend', 'Web'],
   },
   {
@@ -65,7 +60,6 @@ const blogs = [
     coverImage: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80',
     author: 'Olivia Wilson',
     date: 'March 10, 2025',
-    readTime: '7 min read',
     tags: ['JavaScript', 'Best Practices', 'Web'],
   },
 ];

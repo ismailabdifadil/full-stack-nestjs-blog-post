@@ -1,4 +1,4 @@
-import { useState, useTransition } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 
@@ -10,19 +10,20 @@ import {
   FormLabel,
   FormMessage,
 } from "./ui/form";
+import { toast } from "react-hot-toast";
 import { ImageIcon, X } from "lucide-react";
-import { toast } from "sonner";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
-
+import { useCreatePostMutation } from "../lib/services/postApiSlice";
 const BlogEditor = ({ initialData, onSubmit, isEdit = false }) => {
-  const [isPending, startTransition] = useTransition();
   const [imagePreview, setImagePreview] = useState(
     initialData?.coverImage || null
   );
   const [tags, setTags] = useState(initialData?.tags || []);
   const [tagInput, setTagInput] = useState("");
+
+  const [createPost, { isLoading: isCreating }] = useCreatePostMutation();
 
   const navigate = useNavigate();
 
@@ -30,7 +31,9 @@ const BlogEditor = ({ initialData, onSubmit, isEdit = false }) => {
     defaultValues: {
       title: initialData?.title || "",
       content: initialData?.content || "",
-      coverImage: initialData?.coverImage || "",
+      coverImage:
+        initialData?.coverImage ||
+        "https://images.unsplash.com/photo-1592424002053-21f369ad7fdb?auto=format&fit=crop&q=80",
     },
   });
 
@@ -64,20 +67,18 @@ const BlogEditor = ({ initialData, onSubmit, isEdit = false }) => {
     }
   };
 
-  const handleSubmit = (data) => {
-    startTransition(() => {
-      try {
-        const blogData = { ...data, tags };
-        onSubmit(blogData);
-        toast.success(
-          `Blog post ${isEdit ? "updated" : "created"} successfully!`
-        );
-        navigate("/");
-      } catch (error) {
-        toast.error("Failed to save blog post. Please try again.");
-        console.error(error);
-      }
-    });
+  const handleSubmit = async (data) => {
+    try {
+      const blogData = { ...data, tags };
+      await createPost(blogData).unwrap();
+      toast.success(
+        `Blog post ${isEdit ? "updated" : "created"} successfully!`
+      );
+      navigate("/");
+    } catch (error) {
+      toast.error("Failed to save blog post. Please try again.");
+      console.error(error);
+    }
   };
 
   return (
@@ -200,8 +201,8 @@ const BlogEditor = ({ initialData, onSubmit, isEdit = false }) => {
             )}
           />
           <div className="flex items-center space-x-4">
-            <Button type="submit" disabled={isPending}>
-              {isPending
+            <Button type="submit" disabled={isCreating}>
+              {isCreating
                 ? "Saving..."
                 : isEdit
                 ? "Update Post"
