@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useState, useTransition } from "react";
 import { Link } from "react-router";
 import { cn } from "../lib/utils";
@@ -6,15 +7,33 @@ import { Button } from "../components/ui/button";
 
 const FeaturedBlogCard = ({
   _id,
+=======
+import { useState, useTransition } from "react"
+import { Link } from "react-router"
+import { cn } from "../lib/utils"
+import { CalendarDays, Clock, User } from "lucide-react"
+import { Button } from "../components/ui/button"
+
+const FeaturedBlogCard = ({
+  id,
+>>>>>>> 05d20f51ac2e90b57d9ccef1b7bc3ffecb3cb4b3
   title,
   excerpt,
   coverImage,
   author,
   date,
+<<<<<<< HEAD
   tags = [],
 }) => {
   const [isPending, startTransition] = useTransition();
   const [isHovered, setIsHovered] = useState(false);
+=======
+  readTime,
+  tags = [],
+}) => {
+  const [isPending, startTransition] = useTransition()
+  const [isHovered, setIsHovered] = useState(false)
+>>>>>>> 05d20f51ac2e90b57d9ccef1b7bc3ffecb3cb4b3
 
   return (
     <article
@@ -45,26 +64,45 @@ const FeaturedBlogCard = ({
           ))}
         </div>
 
+<<<<<<< HEAD
         <Link to={`/blogs/${_id}`} className="block">
+=======
+        <Link to={`/blogs/${id}`} className="block">
+>>>>>>> 05d20f51ac2e90b57d9ccef1b7bc3ffecb3cb4b3
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 transition-colors hover:text-primary">
             {title}
           </h2>
         </Link>
 
         <p className="text-white/80 mb-6 max-w-2xl line-clamp-3">{excerpt}</p>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 05d20f51ac2e90b57d9ccef1b7bc3ffecb3cb4b3
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center text-sm text-white/70 space-x-4 mb-4 sm:mb-0">
             <div className="flex items-center">
               <User className="h-4 w-4 mr-1" />
+<<<<<<< HEAD
               <span>{author.username}</span>
+=======
+              <span>{author}</span>
+>>>>>>> 05d20f51ac2e90b57d9ccef1b7bc3ffecb3cb4b3
             </div>
             <div className="flex items-center">
               <CalendarDays className="h-4 w-4 mr-1" />
               <span>{date}</span>
             </div>
+<<<<<<< HEAD
           </div>
 
           <Link to={`/blogs/${_id}`}>
+=======
+           
+          </div>
+
+          <Link to={`/blog/${id}`}>
+>>>>>>> 05d20f51ac2e90b57d9ccef1b7bc3ffecb3cb4b3
             <Button className="bg-primary hover:bg-primary/90">
               Read Article
             </Button>
@@ -72,7 +110,14 @@ const FeaturedBlogCard = ({
         </div>
       </div>
     </article>
+<<<<<<< HEAD
   );
 };
 
 export default FeaturedBlogCard;
+=======
+  )
+}
+
+export default FeaturedBlogCard
+>>>>>>> 05d20f51ac2e90b57d9ccef1b7bc3ffecb3cb4b3

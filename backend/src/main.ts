@@ -13,9 +13,12 @@ async function bootstrap() {
     credentials: true,
   });
 
+<<<<<<< HEAD
   // Adding base url to the app
   app.setGlobalPrefix('api');
 
+=======
+>>>>>>> 05d20f51ac2e90b57d9ccef1b7bc3ffecb3cb4b3
   await app.listen(PORT ?? 8000, () => {
     console.log(`The server is running on port ${PORT ?? 8000} `);
   });

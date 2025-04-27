@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Link } from "react-router";
 import FeaturedBlogCard from "../components/FeaturedBlogCard";
 import BlogCard from "../components/BlogCard";
@@ -11,16 +12,35 @@ import FeaturedBlogCardSkeleton from "./FeaturedBlogCardSkeleton";
 
 const Hero = () => {
   const [animatedBlogs, setAnimatedBlogs] = useState(false);
+=======
+import { Link } from "react-router"
+import FeaturedBlogCard from "../components/FeaturedBlogCard"
+import BlogCard from "../components/BlogCard"
+import { Button } from "../components/ui/button"
+import { cn } from "../lib/utils"
+import { ArrowRight } from "lucide-react"
+import { useState } from "react"
+import { useEffect } from "react"
+
+const Hero = () => {
+  const [animatedBlogs, setAnimatedBlogs] = useState(false)
+>>>>>>> 05d20f51ac2e90b57d9ccef1b7bc3ffecb3cb4b3
 
   useEffect(() => {
     // Trigger animation after component mounts
     setTimeout(() => {
+<<<<<<< HEAD
       setAnimatedBlogs(true);
     }, 300);
+=======
+      setAnimatedBlogs(true)
+    }, 300)
+>>>>>>> 05d20f51ac2e90b57d9ccef1b7bc3ffecb3cb4b3
 
     // Remove any opacity classes that might be affecting the hero section
     const heroElements = document.querySelectorAll(
       ".hero-section h1, .hero-section p, .hero-section div"
+<<<<<<< HEAD
     );
     heroElements.forEach((el) => {
       el.classList.add("is-visible");
@@ -30,6 +50,27 @@ const Hero = () => {
   const { data: blogs, isLoading, error } = useGetPostsQuery();
 
   
+=======
+    )
+    heroElements.forEach((el) => {
+      el.classList.add("is-visible")
+    })
+  }, [])
+
+  const featuredBlog = {
+    id: "2",
+    title: "The Ultimate Guide to Modern Web Development Practices in 2025",
+    excerpt:
+      "Learn about the latest trends, tools, and techniques that are shaping modern web development in 2025 and beyond.",
+    coverImage:
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80",
+    author: "Alex Johnson",
+    date: "April 2, 2025",
+    readTime: "8 min read",
+    tags: ["Web Development", "React", "Trends"],
+  }
+
+>>>>>>> 05d20f51ac2e90b57d9ccef1b7bc3ffecb3cb4b3
   const recentBlogs = [
     {
       id: "blog-1",
@@ -68,8 +109,12 @@ const Hero = () => {
       readTime: "7 min read",
       tags: ["Performance", "Optimization", "Web"],
     },
+<<<<<<< HEAD
   ];
 
+=======
+  ]
+>>>>>>> 05d20f51ac2e90b57d9ccef1b7bc3ffecb3cb4b3
   return (
     <main>
       {/* Hero Section */}
@@ -96,6 +141,10 @@ const Hero = () => {
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
+<<<<<<< HEAD
+=======
+              
+>>>>>>> 05d20f51ac2e90b57d9ccef1b7bc3ffecb3cb4b3
             </div>
           </div>
         </div>
@@ -107,11 +156,15 @@ const Hero = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="mb-12">
           <h2 className="text-3xl font-bold mb-10">Featured Post</h2>
+<<<<<<< HEAD
           {isLoading ? (
             <FeaturedBlogCardSkeleton />
           ) : (
             <FeaturedBlogCard {...blogs[0]} />
           )}
+=======
+          <FeaturedBlogCard {...featuredBlog} />
+>>>>>>> 05d20f51ac2e90b57d9ccef1b7bc3ffecb3cb4b3
         </div>
 
         {/* Recent Posts Section */}
@@ -145,7 +198,14 @@ const Hero = () => {
         </div>
       </section>
     </main>
+<<<<<<< HEAD
   );
 };
 
 export default Hero;
+=======
+  )
+}
+
+export default Hero
+>>>>>>> 05d20f51ac2e90b57d9ccef1b7bc3ffecb3cb4b3

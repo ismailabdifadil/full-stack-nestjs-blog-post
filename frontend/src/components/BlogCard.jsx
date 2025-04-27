@@ -7,7 +7,11 @@ import { Button } from "../components/ui/button";
 
 
 const BlogCard = ({
+<<<<<<< HEAD
   _id,
+=======
+  id,
+>>>>>>> 05d20f51ac2e90b57d9ccef1b7bc3ffecb3cb4b3
   title,
   excerpt,
   coverImage,
@@ -65,7 +69,11 @@ const BlogCard = ({
             isHovered ? "text-primary" : ""
           )}
         >
+<<<<<<< HEAD
           <Link to={`/blogs/${_id}`}>{title}</Link>
+=======
+          <Link to={`/blogs/${id}`}>{title}</Link>
+>>>>>>> 05d20f51ac2e90b57d9ccef1b7bc3ffecb3cb4b3
         </h3>
 
         <p className="text-muted-foreground mb-4 line-clamp-2">{excerpt}</p>
@@ -74,7 +82,11 @@ const BlogCard = ({
           <div className="flex items-center text-sm text-muted-foreground space-x-4 mb-4 ">
             <div className="flex items-center ">
               <User className="h-4 w-4 mr-1" />
+<<<<<<< HEAD
               <span>{author.username}</span>
+=======
+              <span>{author}</span>
+>>>>>>> 05d20f51ac2e90b57d9ccef1b7bc3ffecb3cb4b3
             </div>
             <div className="flex items-center">
               <CalendarDays className="h-4 w-4 mr-1" />
@@ -82,7 +94,11 @@ const BlogCard = ({
             </div>
           </div>
 
+<<<<<<< HEAD
           <Link to={`/blogs/${_id}`}>
+=======
+          <Link to={`/blogs/${id}`}>
+>>>>>>> 05d20f51ac2e90b57d9ccef1b7bc3ffecb3cb4b3
             <Button
               variant="ghost"
               className="text-primary hover:text-primary/80 px-3"

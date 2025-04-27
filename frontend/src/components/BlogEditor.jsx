@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { useState } from "react";
+=======
+import { useState, useTransition } from "react";
+>>>>>>> 05d20f51ac2e90b57d9ccef1b7bc3ffecb3cb4b3
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 
@@ -10,6 +14,7 @@ import {
   FormLabel,
   FormMessage,
 } from "./ui/form";
+<<<<<<< HEAD
 import { toast } from "react-hot-toast";
 import { ImageIcon, X } from "lucide-react";
 import { Input } from "./ui/input";
@@ -17,23 +22,40 @@ import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
 import { useCreatePostMutation } from "../lib/services/postApiSlice";
 const BlogEditor = ({ initialData, onSubmit, isEdit = false }) => {
+=======
+import { ImageIcon, X } from "lucide-react";
+import { toast } from "sonner";
+import { Input } from "./ui/input";
+import { Button } from "./ui/button";
+import { Textarea } from "./ui/textarea";
+
+const BlogEditor = ({ initialData, onSubmit, isEdit = false }) => {
+  const [isPending, startTransition] = useTransition();
+>>>>>>> 05d20f51ac2e90b57d9ccef1b7bc3ffecb3cb4b3
   const [imagePreview, setImagePreview] = useState(
     initialData?.coverImage || null
   );
   const [tags, setTags] = useState(initialData?.tags || []);
   const [tagInput, setTagInput] = useState("");
 
+<<<<<<< HEAD
   const [createPost, { isLoading: isCreating }] = useCreatePostMutation();
 
+=======
+>>>>>>> 05d20f51ac2e90b57d9ccef1b7bc3ffecb3cb4b3
   const navigate = useNavigate();
 
   const form = useForm({
     defaultValues: {
       title: initialData?.title || "",
       content: initialData?.content || "",
+<<<<<<< HEAD
       coverImage:
         initialData?.coverImage ||
         "https://images.unsplash.com/photo-1592424002053-21f369ad7fdb?auto=format&fit=crop&q=80",
+=======
+      coverImage: initialData?.coverImage || "",
+>>>>>>> 05d20f51ac2e90b57d9ccef1b7bc3ffecb3cb4b3
     },
   });
 
@@ -67,6 +89,7 @@ const BlogEditor = ({ initialData, onSubmit, isEdit = false }) => {
     }
   };
 
+<<<<<<< HEAD
   const handleSubmit = async (data) => {
     try {
       const blogData = { ...data, tags };
@@ -79,6 +102,22 @@ const BlogEditor = ({ initialData, onSubmit, isEdit = false }) => {
       toast.error("Failed to save blog post. Please try again.");
       console.error(error);
     }
+=======
+  const handleSubmit = (data) => {
+    startTransition(() => {
+      try {
+        const blogData = { ...data, tags };
+        onSubmit(blogData);
+        toast.success(
+          `Blog post ${isEdit ? "updated" : "created"} successfully!`
+        );
+        navigate("/");
+      } catch (error) {
+        toast.error("Failed to save blog post. Please try again.");
+        console.error(error);
+      }
+    });
+>>>>>>> 05d20f51ac2e90b57d9ccef1b7bc3ffecb3cb4b3
   };
 
   return (
@@ -201,8 +240,13 @@ const BlogEditor = ({ initialData, onSubmit, isEdit = false }) => {
             )}
           />
           <div className="flex items-center space-x-4">
+<<<<<<< HEAD
             <Button type="submit" disabled={isCreating}>
               {isCreating
+=======
+            <Button type="submit" disabled={isPending}>
+              {isPending
+>>>>>>> 05d20f51ac2e90b57d9ccef1b7bc3ffecb3cb4b3
                 ? "Saving..."
                 : isEdit
                 ? "Update Post"

@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
+<<<<<<< HEAD
 import { Link, useLocation } from "react-router";
+=======
+import { Link, useLocation,  } from "react-router";
+>>>>>>> 05d20f51ac2e90b57d9ccef1b7bc3ffecb3cb4b3
 import { Menu, X, PenSquare } from "lucide-react";
 import { cn } from "../lib/utils";
 import { Button } from "./ui/button";
@@ -83,7 +87,11 @@ const Header = () => {
                   Add New Blog
                 </Button>
               </Link>
+<<<<<<< HEAD
               {user && (
+=======
+              {user ? (
+>>>>>>> 05d20f51ac2e90b57d9ccef1b7bc3ffecb3cb4b3
                 <>
                   <Button
                     variant="destructive"
@@ -93,6 +101,21 @@ const Header = () => {
                     Logout
                   </Button>
                 </>
+<<<<<<< HEAD
+=======
+              ) : (
+                <>
+                  <Link to="/signin">
+                    <Button variant="ghost" size="sm">
+                      Sign In
+                    </Button>
+                  </Link>
+
+                  <Link to="/signup">
+                    <Button size="sm">Sign Up</Button>
+                  </Link>
+                </>
+>>>>>>> 05d20f51ac2e90b57d9ccef1b7bc3ffecb3cb4b3
               )}
             </div>
           </div>
